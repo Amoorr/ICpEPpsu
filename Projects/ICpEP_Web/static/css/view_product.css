@@ -1,0 +1,192 @@
+/* General body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ManropeR';
+}
+
+@font-face {
+    font-family: 'ManropeR';
+    src: url('../Fonts/Manrope-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'ManropeSB';
+    src: url('../Fonts/Manrope-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'remingo';
+    src: url('../Fonts/remingo-remingo-regular-400.ttf') format('truetype');
+}
+
+/* General body styling */
+body {
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-color: #609cf4;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+}
+
+#product-images h2,
+#product-details h2,
+#actions h2 {
+    color: #609cf4;
+}
+
+/* Product gallery styling */
+.product-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  /* Centers images horizontally */
+    align-items: center;      /* Centers images vertically */
+    gap: 20px;                /* Adds space between images */
+}
+
+.product-gallery img {
+    margin: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 200px;
+    object-fit: cover;
+}
+
+/* Table styling */
+.table-details,
+.table-actions {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table-details th,
+.table-details td,
+.table-actions td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.table-details th {
+    background-color: #609cf4;
+    color: white;
+}
+
+.table-actions td {
+    text-align: center;
+}
+
+.table-actions a {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #609cf4;
+    border-radius: 5px;
+    margin: 5px;
+    font-weight: bold;
+}
+
+.table-actions a:hover {
+    background-color: #4ca3d9;
+}
+
+.btn-secondary {
+    background-color: lightgray;
+}
+
+.btn-secondary:hover {
+    background-color: #888;
+}
+
+/* Footer styling */
+footer {
+    background-color: #609cf4;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.2em;
+    }
+
+    .product-gallery {
+        justify-content: center;
+    }
+
+    .product-gallery img {
+        width: 80%;
+        max-width: 150px;
+    }
+
+    .table-details, .table-actions {
+        width: 100%;
+        font-size: 0.9em;
+    }
+
+    .table-actions a {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+
+    footer {
+        font-size: 0.8em;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.1em;
+    }
+
+    .product-gallery img {
+        width: 90%;
+        max-width: 120px;
+    }
+
+    .table-details, .table-actions {
+        width: 100%;
+        font-size: 0.85em;
+    }
+
+    .table-actions a {
+        padding: 6px 12px;
+        font-size: 0.85em;
+    }
+
+    footer {
+        font-size: 0.7em;
+        padding: 6px;
+    }
+
+    #actions h2 {
+        font-size: 1.2em;
+    }
+}

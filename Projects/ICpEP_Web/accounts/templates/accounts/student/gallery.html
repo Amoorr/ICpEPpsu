@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}  
+
+    <link rel="stylesheet" href="{% static 'css/gallery-style.css' %}">
+    <!-- Burger menu icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <title>ICpEP.SE - PSU.UC</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+
+<body>
+    <nav class="menu-bar">
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+        <!-- Hamburger-Style Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <!-- Site logo -->
+        <label class="logo">ICpEP.SE - PSU.UC</label>
+        <!-- Navigation links -->
+        <ul>
+            <li><a id="menunav" href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+            <li><a id="menunav" href="{% url 'accounts:about_us' %}">About Us</a></li>
+            <li><a id="menunav" href="{% url 'marketplace:student_marketplace' %}">Store</a></li>
+            <li><a id="menunav" class="active" href="#">Gallery</a></li>
+            <li><a id="menunav" href="{% url 'news:student_news_list' %}">News</a></li>
+            <li><a id="menunav" href="{% url 'event_calendar:student_calendar' %}">Calendar</a></li>
+            <li><a id="menunav" href="{% url 'accounts:change_password' %}">Account</a></li>
+        </ul>
+    </nav>
+
+    <!-- Section for image -->
+    <section></section>
+
+    <div class="gallery-section">
+        <div class="photo-gallery">
+            <div class="photo-row">
+                <img src="{% static 'images/gallery/IMG_3957.webp' %}" alt="Photo 1">
+                <img src="{% static 'images/gallery/IMG_4320.webp' %}" alt="Photo 2">
+            </div>
+            <div class="photo-row">
+                <img src="{% static 'images/gallery/IMG_4307.webp' %}" alt="Photo 3">
+                <img src="{% static 'images/gallery/IMG_4064.webp' %}" alt="Photo 4">
+            </div>
+            <div class="photo-row">
+                <img src="{% static 'images/gallery/IMG_4222.webp' %}" alt="Photo 5">
+                <img src="{% static 'images/gallery/IMG_3345.webp' %}" alt="Photo 6">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+
+        const navbar = document.querySelector(".menu-bar");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+        {% load static %}  <!-- Load static files in Django -->
+
+        <!-- Link to the CSS file -->
+        <link rel="stylesheet" href="{% static 'css/about_us.css' %}">
+
+        <!-- Font Awesome CDN for Burger menu icon -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+        <title>ICpEP.SE - PSU.UC</title>
+
+        <!-- Animate on Scroll Library -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+
+    <body>
+        <nav>
+            <!-- Checkbox for toggling menu -->
+            <input type="checkbox" id="check">
+            <!-- Hamburger-Style Menu icon -->
+            <label for="check" class="checkbtn">
+              <i class="fas fa-bars"></i>
+            </label>
+            <!-- Site logo -->
+            <label class="logo">ICpEP.SE - PSU.UC</label>
+            <!-- Navigation links -->
+            <ul>
+                <li><a id ="menunav" href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+                <li><a id ="menunav" class="active" href="#">About Us</a></li>
+                <li><a id ="menunav" href="{% url 'marketplace:student_marketplace' %}">Store</a></li>
+                <li><a id ="menunav" href="{% url 'accounts:gallery' %}">Gallery</a></li>
+                <li><a id ="menunav" href="{% url 'news:student_news_list' %}">News</a></li>
+                <li><a id ="menunav" href="{% url 'event_calendar:student_calendar' %}">Calendar</a></li>
+                <li><a id ="menunav" href="{% url 'accounts:change_password' %}">Account</a></li>
+              </ul>
+        </nav>
+
+        <div class="developers">
+            <img loading="lazy" class="images" src="{% static 'Photos/About Us Page/IMG_2936.webp' %}">
+            <h1></h1>
+            <p></p>
+
+            <div class="news-section">
+                <div>
+                  <div data-aos="fade-up" class="latest-news-title">DEVELOPERS</div>
+                  <div data-aos="fade-right" class="lates-news-desc">Meet the Minds Behind the Project</div>
+                </div>
+
+                <div class="news-card-container">
+                    <!-- Ronquillo Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Ronquillo.webp' %}">
+                        <div class="news-card-content">
+                          <h1>James Patrick Ronquillo</h1>
+                          <p1>Project Manager | Backend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>masterkyogre21@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0963-135-8974</p3>
+                        </div>
+                    </div>
+
+                    <!-- Rirao Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Rirao.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Frejerico Rirao</h1>
+                          <p1>UI/UX Designer | Frontend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>frejericorirao@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0915-964-0186</p3>
+                        </div>
+                    </div>
+
+                    <!-- Cayetano Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Cayetano.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Junuel Josh Cayetano</h1>
+                          <p1>Backend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>junuelcayetano@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0909-576-1917 </p3>
+                        </div>
+                    </div>
+
+                    <!-- Espiritu Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Espiritu.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Deanne Jasmin Espiritu</h1>
+                          <p1>Backend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>deanneespiritu16@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0965-081-0394</p3>
+                        </div>
+                    </div>
+
+                    <!-- Gamboa Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Gamboa.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Calvin Kevin Gamboa</h1>
+                          <p1></p1>
+                          <p2><i class="fas fa-envelope"></i>gambokevin29@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0956-667-4870</p3>
+                        </div>
+                    </div>
+
+                    <!-- Robles Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Robles.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Daniel John Robles</h1>
+                          <p1>Backend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>danieljohnrobles68@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0942-213-3265</p3>
+                        </div>
+                    </div>
+
+                    <!-- Servito Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Servito.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Jomar Servito</h1>
+                          <p1>Frontend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>jomarservito23@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0998-331-8537</p3>
+                        </div>
+                    </div>
+
+                    <!-- Tabonda Card -->
+                    <div data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" class="news-card">
+                        <img loading="lazy" src="{% static 'images/about_us/Tabonda.webp' %}">
+                        <div class="news-card-content">
+                          <h1>Villamor Tabonda</h1>
+                          <p1>Backend Developer</p1>
+                          <p2><i class="fas fa-envelope"></i>villamortbnd@gmail.com</p2>
+                          <p3><i class="fas fa-phone-alt"></i>0950-951-2380</p3>
+                        </div>
+                    </div>
+
+                    <div class="group-photos-landscape">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2936.webp' %}">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2945.webp' %}">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2931.webp' %}">
+                    </div>
+                    <div class="group-photos-portrait">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2922.webp' %}">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2918.webp' %}">
+                        <img data-aos="fade-up" data-aos-offset="300" data-aos-duration="500" loading="lazy" src="{% static 'images/about_us/IMG_2917.webp' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AOS (Animate On Scroll) JavaScript -->
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+    </body>
+</html>

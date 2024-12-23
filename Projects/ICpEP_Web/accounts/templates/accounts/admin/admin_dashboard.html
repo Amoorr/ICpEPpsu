@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <style>
+        /* Global Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f8ff; /* Light blue background for a clean look */
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 30px;
+            background: #ffffff; /* White background for content */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Styling */
+        h1 {
+            color: #1d3557; /* Deep blue for headings */
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #457b9d; /* Lighter shade of blue for subheadings */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Action Section Styling */
+        .dashboard-actions {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-actions h3 {
+            color: #1d3557;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-actions a {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #457b9d; /* Blue background for buttons */
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-actions a:hover {
+            background-color: #f4a261; /* Gold hover color */
+        }
+
+        /* Logout Button Styling */
+        .logout-button {
+            background-color: #e63946; /* Red color for logout */
+        }
+
+        .logout-button:hover {
+            background-color: #d62828; /* Darker red for hover */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .dashboard-actions a {
+                width: 100%; /* Buttons take full width on small screens */
+                margin: 10px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome, {{ user.given_name }} {{ user.last_name }}</h1>
+    <h2>Admin Dashboard</h2>
+
+    <div class="dashboard-actions">
+        <h3>Accounts Management</h3>
+        <a href="{% url 'accounts:admin_list' %}">Go to Accounts</a>
+    </div>
+
+    <div class="dashboard-actions">
+        <h3>Marketplace Management</h3>
+        <a href="{% url 'marketplace:admin_marketplace' %}">Go to Marketplace</a>
+    </div>
+
+    <div class="dashboard-actions">
+        <h3>Event Calendar</h3>
+        <a href="{% url 'event_calendar:admin_calendar' %}">Go to Calendar</a>
+    </div>
+
+    <div class="dashboard-actions">
+        <h3>News and Updates</h3>
+        <a href="{% url 'news:admin_news' %}">Go to News</a>
+    </div>
+
+    <div class="dashboard-actions">
+        <h3>Account</h3>
+        <a href="{% url 'accounts:logout' %}" class="logout-button">Logout</a>
+    </div>
+</div>
+
+</body>
+</html>

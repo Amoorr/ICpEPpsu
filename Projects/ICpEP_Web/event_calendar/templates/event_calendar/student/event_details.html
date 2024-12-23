@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    {% load static %}  <!-- Load static files for Django -->
+
+    <!-- Link to the static CSS file using Django's static tag -->
+    <link rel="stylesheet" href="{% static 'css/events-style.css' %}">
+    <!-- Burger menu icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <!-- AOS (Animate on Scroll) library -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <title>ICpEP.SE - PSU.UC</title>
+</head>
+
+<body>
+    <nav class="menu-bar">
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+        <!-- Hamburger-Style Menu icon -->
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <!-- Site logo -->
+        <label class="logo">ICpEP.SE - PSU.UC</label>
+        <!-- Navigation links with Django URL template tag -->
+        <ul>
+            <li><a id="menunav" href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+            <li><a id="menunav" href="{% url 'accounts:about_us' %}">About Us</a></li>
+            <li><a id ="menunav" href="{% url 'marketplace:student_marketplace' %}">Store</a></li>
+            <li><a id="menunav" href="{% url 'accounts:gallery' %}">Gallery</a></li>
+            <li><a id="menunav" href="{% url 'news:student_news_list' %}">News</a></li>
+            <li><a id="menunav" href="{% url 'event_calendar:student_calendar' %}">Calendar</a></li>
+            <li><a class="active" href="#">Calendar</a></li>
+        </ul>
+    </nav>
+
+    <div class="container-events">
+        <div class="big-circle-events"></div>
+
+        <div class="left-section-events">
+            <div class="events-image-container-events">
+                <!-- Static image link using Django's static tag -->
+                <img src="{% static 'images/WAWIE2.jpg' %}" alt="Events">
+            </div>
+        </div>
+
+        <div class="right-section-events">
+            <div class="title-box-events">
+                <h1>{{ event.event_name }}</h1> <span>{{ event.event_subhead }}</span>
+            </div>
+
+            <div class="event-details-container">
+                <!-- General Section -->
+                <div class="event-row">
+                    <span class="event-label">Tag</span>
+                    <span class="event-value">{{ event.event_tag }}</span>
+                    <span class="event-label">Attendance Span</span>
+                    <span class="event-value">{{ event.attendance_span }}</span>
+                </div>
+
+                <!-- Date Section -->
+                <div class="event-row">
+                    <span class="event-label">Date</span>
+                    <span class="event-value">{{ event.event_date }}</span>
+                    <span class="event-label">Participation Status</span>
+                    <span class="event-value">
+                        {% if event.participated %}
+                            Participated
+                        {% else %}
+                            Not Participated
+                        {% endif %}
+                    </span>
+                </div>
+
+                <!-- Time Section -->
+                <div class="event-row">
+                    <span class="event-label">Time</span>
+                    <span class="event-value">{{ event.event_time }}</span>
+                    <span class="event-label">Attendance Open</span>
+                    <span class="event-value">
+                        {% if event.attendance_open %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+
+        const navbar = document.querySelector(".menu-bar");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+</body>
+</html>

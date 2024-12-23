@@ -1,0 +1,144 @@
+/* Global Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f8ff; /* Light blue background */
+    color: #333; /* Neutral text color */
+    line-height: 1.6;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff; /* White background for content */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Styling */
+h1, h2, h3, h4, h5, h6 {
+    color: #1d3557; /* Deep blue for headings */
+    margin-bottom: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Link Styling */
+a {
+    color: #457b9d; /* Blue links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #f4a261; /* Gold hover effect */
+}
+
+/* Button Styling */
+button, .button, a.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #457b9d; /* Blue buttons */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, .button:hover, a.button:hover {
+    background-color: #f4a261; /* Gold hover effect */
+}
+
+/* Logout Button Specific */
+.logout-button {
+    background-color: #e63946; /* Red color for logout */
+}
+
+.logout-button:hover {
+    background-color: #d62828; /* Darker red for hover */
+}
+
+/* Form Styling */
+form {
+    margin-bottom: 20px;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #457b9d;
+    outline: none;
+    box-shadow: 0 0 5px rgba(69, 123, 157, 0.5);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #457b9d;
+    color: #ffffff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f4a261;
+    color: #ffffff;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px 20px;
+    background-color: #1d3557;
+    color: #ffffff;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    button, .button, a.button {
+        width: 100%;
+        padding: 12px;
+    }
+}

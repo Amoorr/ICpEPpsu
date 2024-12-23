@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Order | ICpEP Marketplace</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles_editOrder.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Edit Order for {{ cart_item.product.product_name }}</h1>
+        <p>Price: ₱{{ cart_item.product.price }}</p>
+        <p>Current Quantity: {{ cart_item.quantity }}</p>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            <div class="product-image-container">
+                {% if cart_item.product.images.exists %}
+                    {% for image in cart_item.product.images.all %}
+                        <img src="{{ image.image.url }}" alt="{{ cart_item.product.product_name }}" class="product-image" />
+                    {% endfor %}
+                {% else %}
+                    <p>No image available for this product.</p>
+                {% endif %}
+            </div>            
+
+            <div class="form-container-wrapper">
+                <section id="order-form">
+                    <form method="POST" class="form-container">
+                        {% csrf_token %}
+                        <label for="quantity">Order Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1" value="{{ cart_item.quantity }}" required>
+                        <button type="submit" class="btn-primary">Update Order</button>
+                    </form>
+                </section>
+
+                <section id="navigation">
+                    <p><a href="{% url 'marketplace:view_cart' %}" class="btn-secondary">Back to Cart</a></p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; {{ current_year }} ICpEP. All rights reserved.</p>
+    </footer>
+</body>
+</html>

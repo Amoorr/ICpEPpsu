@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete News</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+</head>
+<body>
+    <h1>Delete News Article</h1>
+
+    <h2>Are you sure you want to delete this news article?</h2>
+
+    <h3>Title:</h3>
+    <p>{{ news.title }}</p>
+
+    <h3>Content:</h3>
+    <p>{{ news.content }}</p>
+
+    <h3>Photos:</h3>
+    {% for photo in news.articlephotos.all %}
+        <div>
+            <img src="{{ photo.image_path }}" alt="Photo for {{ news.title }}" width="100px">
+            <p>{{ photo.caption }}</p>
+        </div>
+    {% empty %}
+        <p>No photos available for this article.</p>
+    {% endfor %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yes, Delete</button>
+        <a href="{% url 'news:admin_news' %}">Cancel</a>
+    </form>
+
+</body>
+</html>

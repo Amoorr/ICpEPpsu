@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Burger menu icon link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+    <title>ICpEP.SE - PSU.UC</title>
+    <style>
+        /* Google Fonts Link */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+
+        /* General Styles */
+        * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            background-color: #F0F0EC;
+        }
+
+        body {
+            font-family: "Manrope", sans-serif;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: #F0F0EC;
+            height: 80px;
+            width: 100%;
+            position: fixed;
+            z-index: 9999;
+            transition: box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        label.logo {
+            color: #292929;
+            font-size: 25px;
+            line-height: 80px;
+            padding: 0 64px;
+            font-weight: bold;
+        }
+
+        /* Scoped Navigation Styles */
+        nav ul {
+            float: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 8px;
+        }
+
+        nav ul li a {
+            color: #292929;
+            font-size: 16px;
+            padding: 7px 13px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            text-decoration: none;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #292929;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .checkbtn {
+            font-size: 22px;
+            color: #292929;
+            float: right;
+            line-height: 80px;
+            margin-right: 30px;
+            cursor: pointer;
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        @media (max-width: 1440px) {
+            label.logo {
+                padding-left: 30px;
+            }
+            nav ul li a {
+                font-size: 16px;
+            }
+        }
+
+        /* Responsive Navigation */
+        @media (max-width: 1024px) {
+            .checkbtn {
+                display: block;
+            }
+            label.logo {
+                font-size: 22px;
+            }
+            nav ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #F0F0EC;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all 0.5s ease;
+            }
+            nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+            }
+            nav ul li a {
+                font-size: 20px;
+            }
+            nav ul li a:hover,
+            nav ul li a.active {
+                background: none;
+            }
+            #check:checked ~ ul {
+                left: 0;
+            }
+        }
+        
+        /* Search Container */
+        .search-container {
+            background-color: #F0F0EC;
+            padding: 20px;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .search-container form {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 400px;
+            margin-right: 10px;
+            font-family: "Manrope", sans-serif;
+        }
+
+        .search-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #F0F0EC;
+            background-color: #292929;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: "Manrope", sans-serif;
+            transition: 0.3s ease;
+        }
+
+        .search-btn:hover {
+            color: #292929;
+            background-color: #F5F5F5;
+        }
+
+        /* News List Container */
+        .news-container {
+            margin: 20px auto;
+            width: 80%;
+            background-color: transparent;
+        }
+
+        .news-list {
+            margin-top: 10px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .news-item {
+            background-color: #F5F5F5;
+            margin: 10px 0;
+            padding: 15px 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .news-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .news-item a {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: #292929;
+            background-color: transparent;
+        }
+
+        .news-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            background-color: transparent;
+        }
+
+        .news-date {
+            font-size: 14px;
+            color: #767676;
+            background-color: transparent;
+        }
+
+        .no-news {
+            text-align: center;
+            font-size: 14px;
+            color: #767676;
+            font-style: italic;
+        }
+
+        /* Exclude news-item li from nav styles */
+        nav ul li:not(.news-item) {
+            display: inline-block;
+            line-height: 80px;
+            margin: 0 8px;
+        }
+
+        /* Responsive media query code for mobile */
+        @media (max-width: 600px) {
+            .search-input {
+                width: 200px;
+            }
+        }
+
+    </style>
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+    <nav class="menu-bar">
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
+        <label class="logo">ICpEP.SE - PSU.UC</label>
+        <ul>
+            <li><a id="menunav" href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+            <li><a id="menunav" href="{% url 'accounts:about_us' %}">About Us</a></li>
+            <li><a id="menunav" href="{% url 'marketplace:student_marketplace' %}">Store</a></li>
+            <li><a id="menunav" href="{% url 'accounts:gallery' %}">Gallery</a></li>
+            <li><a id="menunav" class="active" href="#">News</a></li>
+            <li><a id="menunav" href="{% url 'event_calendar:student_calendar' %}">Calendar</a></li>
+            <li><a id="menunav" href="{% url 'accounts:change_password' %}">Account</a></li>
+        </ul>
+    </nav>
+
+    <h1>News Articles</h1>
+
+    <div class="search-container">
+        <form method="get" action="{% url 'news:student_news_list' %}">
+            <input type="text" class="search-input" name="search" placeholder="Search by title" value="{{ request.GET.search }}">
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+    </div>
+
+    <div class="news-container">
+        <ul class="news-list">
+            {% for news in news_list %}
+                <li class="news-item">
+                    <a href="{% url 'news:student_news_detail' news.article_id %}">
+                        <span class="news-title">{{ news.title }}</span>
+                        <span class="news-date">Published on: {{ news.publication_date }}</span>
+                    </a>
+                </li>
+            {% empty %}
+                <li class="no-news">No news articles found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

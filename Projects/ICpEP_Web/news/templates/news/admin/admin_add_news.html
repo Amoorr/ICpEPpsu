@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add News</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+    <style>
+        /* Pop-up notification styling */
+        #popup-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+        #popup-notification.error {
+            background-color: #f44336; /* Red for error messages */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Add News Article</h1>
+
+        <!-- Conditionally render the pop-up only if popup_message exists -->
+        {% if popup_message %}
+        <div id="popup-notification" class="{% if 'Failed' in popup_message %}error{% endif %}">
+            {{ popup_message }}
+        </div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Render the form for entering news article details -->
+            <h2>News Details</h2>
+            {{ news_form.as_p }}
+
+            {% if news_form.errors %}
+            <div class="errors">
+                <ul>
+                    {% for field in news_form %}
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- Render the formset for uploading photos -->
+            <h2>Photos</h2>
+            {{ photo_formset.management_form }}
+
+            {% for form in photo_formset %}
+            <div>
+                <h3>Photo {{ forloop.counter }}</h3>
+                {{ form.as_p }}  <!-- Render the individual photo form fields -->
+                {% if form.errors %}
+                <div class="errors">
+                    <ul>
+                        {% for error in form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+
+            <!-- Preview area for dynamically displaying selected images -->
+            <div id="photo-preview"></div>
+
+            <button type="submit">Add News</button>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        // Show the pop-up dynamically if it exists
+        $(document).ready(function () {
+            const popup = $("#popup-notification");
+            if (popup.length > 0) {
+                popup.fadeIn().delay(3000).fadeOut(); // Show for 3 seconds, then hide
+            }
+        });
+    </script>
+</body>
+</html>

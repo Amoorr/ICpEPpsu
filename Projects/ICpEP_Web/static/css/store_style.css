@@ -1,0 +1,340 @@
+/* Google Fonts Link */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  background-color: #F0F0EC;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+}
+
+/* Navitagion Bar */
+nav {
+  background: #F0F0EC;
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+  /* filter: drop-shadow(30px 10px 4px #b4b4b2); */
+
+  transition: box-shadow 0.3s ease;
+}
+
+/* Shadow effect when scrolled */
+nav.scrolled {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+label.logo {
+  color: #292929;
+  font-size: 25px;
+  line-height: 80px;
+  /* Adjust when icon is added */
+  padding: 0 64px;
+  font-weight: bold;
+}
+
+/* Menu bar styling */
+nav ul {
+  float: right;
+  margin-right: 20px;
+}
+nav ul li {
+  display: inline-block;
+  line-height: 80px;
+  margin: 0 8px;
+}
+
+nav ul li a {
+  color: #292929;
+  font-size: 16px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+}
+
+/* Create the animated underline */
+#menunav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #292929;
+  transition: width 0.3s ease;
+}
+
+/* When hovering over the link, expand the underline */
+#menunav:hover::after,
+#menunav.active::after {
+  width: 100%;
+}
+
+.checkbtn {
+  font-size: 22px;
+  color: #292929;
+  float: right;
+  line-height: 80px;
+  margin-right: 30px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+@media (max-width: 1440px) {
+  label.logo {
+    padding-left: 30px;
+  }
+  nav ul li a {
+    font-size: 16px;
+  }
+}
+
+/* Responsive media query code for small screen */
+@media (max-width: 1024px) {
+  .checkbtn {
+    display: block;
+  }
+  label.logo {
+    font-size: 22px;
+  }
+  ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #F0F0EC;
+    top: 80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+  }
+  nav ul li {
+    display: block;
+    margin: 50px 0;
+    line-height: 30px;
+  }
+  nav ul li a {
+    font-size: 20px;
+  }
+  a:hover,
+  a.active {
+    background: none;
+  }
+  #check:checked~ul {
+    left: 0;
+  }
+}
+
+/* STORE PAGE CSS */
+
+.square {
+  width: 90%;
+  max-width: 1422px;
+  height: auto;
+  padding: 20px;
+  border-radius: 24px;
+  background-color: #609BF3;
+  margin: 10px auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  position: relative; /* Allows positioning of the button inside the box */
+}
+
+.text {
+  font-family: 'Inter', sans-serif;
+  font-size: 5vw;
+  font-weight: 900;
+  font-style: italic;
+  color: #F0F0EC;
+  background-color: transparent;
+  margin-bottom: 20px;
+  margin-left: 0;
+}
+
+.cart-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #609BF3;
+  background-color: #F0F0EC;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cart-button:hover {
+  background-color: #F0F0EC;
+  color: #4071B3;
+}
+
+.cart-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  color: #C48A00;
+}
+
+
+
+@media (min-width: 1024px) {
+  .square {
+    height: 235px;
+  }
+  .text {
+    font-size: 48px;
+    margin-left: 120px; /* Apply left margin on large screens */
+  }
+}
+
+@media (max-width: 1023px) {
+  .text {
+    font-size: 6vw;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .square {
+    height: auto;
+    padding: 30px;
+  }
+  .text {
+    font-size: 6vw;
+    margin-top: 20px;
+  }
+}
+
+
+
+/* STORE PAGE ITEMS */
+
+.store-items-container {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.product-card {
+  display: flex;
+  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); */
+  position: relative;
+  background-color: #D9D9D9;
+  height: 200px;
+  width: 100%;
+  margin-top: 150px;
+  border-radius: 24px;
+}
+
+.product-card img {
+  width: 100%;
+  max-width: 230px; /* Set a max width to prevent it from becoming too large */
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.product-container {
+  width: 300px;
+  flex: 1 1 calc(25% - 20px); /* 4 columns with space between */
+  /* padding: 20px; */
+}
+
+.product-container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+}
+
+
+.product-info {
+  position: absolute;
+  bottom: 0;
+  margin: 15px;
+  background-color: transparent;
+  margin-left: 30px;
+}
+
+.product-info h3 {
+  font-size: 16px;
+  color: #292929;
+  background-color: transparent;
+}
+
+.product-info p {
+  font-size: 16px;
+  color: #767676;
+  background-color: transparent;
+}
+
+.add-to-cart {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  border: 1px solid #292929;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #EDA702;
+  color: #F0F0EC;
+  border: 1px solid #EDA702;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:focus {
+  background-color: #C48A00;
+  color: #DDDDDD;
+  border: 1px solid #C48A00;
+  transition: all 0.3s ease;
+}
+
+.store-items-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+
+
+
+
+
+
+/* Mobile view adjustments for responsiveness */
+@media (max-width: 768px) {
+  .store-items-container {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+  }
+
+  .product-container {
+    width: 100%; /* Ensure containers take up full width in column layout */
+  }
+}

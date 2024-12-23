@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+            * {
+            padding: 0;
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            background-color: #F0F0EC;
+            }
+
+            body {
+            font-family: "Manrope", sans-serif;
+            }
+
+            /* Navitagion Bar */
+            nav {
+              background: #F0F0EC;
+              height: 80px;
+              width: 100%;
+              position: fixed;
+              z-index: 9999;
+              /* filter: drop-shadow(30px 10px 4px #b4b4b2); */
+            
+              transition: box-shadow 0.3s ease;
+            }
+            
+            /* Shadow effect when scrolled */
+            nav.scrolled {
+              box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            
+            label.logo {
+              color: #292929;
+              font-size: 25px;
+              line-height: 80px;
+              /* Adjust when icon is added */
+              padding: 0 64px;
+              font-weight: bold;
+            }
+            
+            /* Menu bar styling */
+            nav ul {
+              float: right;
+              margin-right: 20px;
+            }
+            nav ul li {
+              display: inline-block;
+              line-height: 80px;
+              margin: 0 8px;
+            }
+            
+            nav ul li a {
+              color: #292929;
+              font-size: 16px;
+              padding: 7px 13px;
+              border-radius: 3px;
+              text-transform: uppercase;
+              text-decoration: none;
+              position: relative;
+            }
+            
+            /* Create the animated underline */
+            #menunav::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background-color: #292929;
+              transition: width 0.3s ease;
+            }
+            
+            /* When hovering over the link, expand the underline */
+            #menunav:hover::after,
+            #menunav.active::after {
+              width: 100%;
+            }
+            
+            .checkbtn {
+              font-size: 22px;
+              color: #292929;
+              float: right;
+              line-height: 80px;
+              margin-right: 30px;
+              cursor: pointer;
+              display: none;
+            }
+            
+            #check {
+              display: none;
+            }
+            @media (max-width: 1440px) {
+              label.logo {
+                padding-left: 30px;
+              }
+              nav ul li a {
+                font-size: 16px;
+              }
+            }
+            
+            /* Responsive media query code for small screen */
+            @media (max-width: 1024px) {
+              .checkbtn {
+                display: block;
+              }
+              label.logo {
+                font-size: 22px;
+              }
+              ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                background: #F0F0EC;
+                top: 80px;
+                left: -100%;
+                text-align: center;
+                transition: all .5s;
+              }
+              nav ul li {
+                display: block;
+                margin: 50px 0;
+                line-height: 30px;
+              }
+              nav ul li a {
+                font-size: 20px;
+              }
+              a:hover,
+              a.active {
+                background: none;
+              }
+              #check:checked~ul {
+                left: 0;
+              }
+            }
+            
+            /* ABOUT US STYLE  */
+
+
+
+
+/* DEVELOPER CARDS============================================ */
+
+.news-section {
+    height: 800px;
+  }
+  
+  .latest-news-title {
+    background: linear-gradient(30deg, #8ab9ff, #011f4c);
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+    margin-top: 300px;
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  
+  .lates-news-desc {
+    font-size: 35px;
+    text-align: center;
+    color: #292929;
+    margin-bottom: 400px;
+  }
+  
+  .news-card-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 100px;
+    height: 440px;
+  }
+  
+  /* DEVELOPER CARD */
+  .news-card {
+    width: 310px;
+    height: 400px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.news-card img {
+    object-fit: cover;
+    width: 100%;
+    height: 210px;
+}
+
+.news-card-content {
+    padding: 16px;
+}
+
+.news-card-content h1 {
+    font-size: 18px;
+}
+
+.news-card-content p1 {
+    font-size: 11px;
+    font-weight: lighter;
+    color: #8E8E8E;
+}
+
+.news-card-content p2, .news-card-content p3 {
+    font-size: 14px;
+    font-weight: lighter;
+    color: #674cff;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.news-card-content p2 i, .news-card-content p3 i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.group-photos-landscape img {
+  width: 50%;
+  border-radius: 12px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.group-photos-portrait img {
+  width: 40%;
+  border-radius: 12px;
+  display: block;
+  margin: auto;
+  margin-bottom: 20px;
+}
+  
+  
+  /* Responsive media query code for mobile */
+  @media (max-width: 600px) {
+    .news-section {
+      height: 2500px;
+    }
+  
+    .news-card {
+      width: 300px;
+      height: 500px;
+    }
+
+    .latest-news-title {
+
+        margin-top: 300px;
+        font-size: 25px;
+        font-weight: bolder;
+      }
+      
+      .lates-news-desc {
+        font-size: 15px;
+        margin-bottom: 400px;
+      }
+
+      .group-photos-landscape img {
+        width: 80%;
+        border-radius: 12px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+
+      .group-photos-portrait img {
+        width: 80%;
+        border-radius: 12px;
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+      }
+  }
+
+
+  

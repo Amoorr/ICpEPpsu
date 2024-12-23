@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+    <style>
+        /* Pop-up notification styling */
+        #popup-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4caf50;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Initially hidden */
+        }
+        #popup-notification.error {
+            background-color: #f44336; /* Red for error messages */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Edit Account: {{ user.given_name }} {{ user.last_name }}</h1>
+
+    <!-- Conditionally render the pop-up only if popup_message exists -->
+    {% if popup_message %}
+    <div id="popup-notification" 
+         class="{% if 'Failed' in popup_message %}error{% endif %}">
+        {{ popup_message }}
+    </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}  <!-- Render the form fields -->
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+        <a href="{% url 'accounts:admin_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+
+<script>
+    // Show the pop-up dynamically if it exists
+    $(document).ready(function () {
+        const popup = $("#popup-notification");
+        if (popup.length > 0) {
+            popup.fadeIn().delay(3000).fadeOut(); // Show for 3 seconds, then hide
+        }
+    });
+</script>
+
+</body>
+</html>

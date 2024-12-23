@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Event Management</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+</head>
+<body>
+    <h1>Admin Calendar Dashboard</h1>
+    <a href="{% url 'event_calendar:create_event' %}" class="btn">Create New Event</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in events %}
+            <tr>
+                <td>{{ item.event.event_name }}</td>
+                <td>{{ item.event.event_date }}</td>
+                <td>{{ item.event.event_time }}</td>
+                <td>
+                    <a href="{% url 'event_calendar:edit_event' item.event.event_id %}" class="btn-link">Edit</a>
+                    <a href="{% url 'event_calendar:delete_event' item.event.event_id %}" class="btn-link">Delete</a>
+                    <a href="{% url 'event_calendar:view_participants' item.event.event_id %}" class="btn-link">View Participants</a>
+                    <!-- Show QR Code button only if attendance has not ended -->
+                    {% if item.qr_button_state == "enabled" %}
+                    <a href="{% url 'event_calendar:qr_scanner' event_id=item.event.event_id %}" class="btn">Scan QR Code</a>
+                    {% elif item.qr_message %}
+                    <p>{{ item.qr_message }}</p>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="{% url 'accounts:admin_dashboard' %}" class="btn-primary">Back to Admin Dashboard</a></p>
+</body>
+</html>

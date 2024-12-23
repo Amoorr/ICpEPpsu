@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ManropeR';
+  }
+  
+  @font-face {
+    font-family: 'ManropeR';
+    src: url('../Fonts/Manrope-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'ManropeSB';
+    src: url('../Fonts/Manrope-SemiBold.ttf') format('truetype');
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+header {
+    background-color: #609cf4;
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    margin: 20px auto;
+    width: 70%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+header h1 {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+header p {
+    margin: 5px 0;
+    font-size: 1.1em;
+}
+
+main {
+    max-width: 600px;
+    margin: 5% auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+#order-form {
+    padding: 20px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container input, 
+.form-container select, 
+.form-container textarea {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: #609cf4;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.btn-primary:hover {
+    background-color: #0f67eb;
+}
+
+#navigation {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.btn-secondary {
+    color: #609cf4;
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.btn-secondary:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    font-size: 0.9em;
+    color: #aaaaaa;
+}
+
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 20px;
+}
+
+.product-image-container {
+    flex: 1;
+    max-width: 300px;
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.form-container-wrapper {
+    flex: 2;
+}

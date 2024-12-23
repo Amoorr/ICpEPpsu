@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+
+        <!-- Static CSS -->
+        <link rel="stylesheet" href="{% static 'css/store_cart_style.css' %}">
+        <!-- Burger menu icon link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+        <title>ICpEP.SE - PSU.UC</title>
+
+        <!-- AOS Animation -->
+        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    </head>
+
+    <body>
+        <nav class="menu-bar">
+            <!-- Checkbox for toggling menu -->
+            <input type="checkbox" id="check">
+            <!-- Hamburger-Style Menu icon -->
+            <label for="check" class="checkbtn">
+              <i class="fas fa-bars"></i>
+            </label>
+            <!-- Site logo -->
+            <label class="logo">ICpEP.SE - PSU.UC</label>
+            <!-- Navigation links -->
+            <ul>
+              <li><a href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+              <li><a href="{% url 'accounts:about_us' %}">About Us</a></li>
+              <li><a href="{% url 'marketplace:student_marketplace' %}" class="active">Store</a></li>
+              <li><a href="{% url 'accounts:gallery' %}">Gallery</a></li>
+              <li><a href="{% url 'news:student_news_list' %}">News</a></li>
+              <li><a href="{% url 'event_calendar:student_calendar' %}">Calendar</a></li>
+            </ul>
+          </nav>
+
+          <!-- STORE CART CODE -->
+          <div class="shopping-cart">
+            <h1>Shopping Cart</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Product Details</th>
+                  <th>Price</th>
+                  <th>Quantity</th>
+                  <th>Total</th>
+                  <th>Order Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart_items %}
+                <tr>
+                  <td>
+                    {% if item.product.images.exists %}
+                    {% for image in item.product.images.all %}
+                        <img src="{{ image.image.url }}" alt="{{ item.product.product_name }} Image" width="200">
+                    {% endfor %}
+                {% else %}
+                    <p>No images available for this product.</p>
+                {% endif %}                
+                  </td>
+                  <td>₱{{ item.product.price }}</td>
+                  <td>
+                    <input type="number" value="{{ item.quantity }}" readonly>
+                  </td>
+                  <td>₱{{ item.total_price }}</td>
+                  <td>{{ item.order_status }}</td>
+                  <td>
+                    <a href="{% url 'marketplace:edit_order' cart_id=item.cart_id %}" class="edit-button">Edit</a>
+                    <a href="{% url 'marketplace:cancel_order' cart_id=item.cart_id %}" class="delete-button"
+                       onclick="return confirm('Are you sure you want to cancel this order?');">
+                      Cancel
+                    </a>
+                    {% if item.order_status == 'Shipped' %}
+                    <a href="{% url 'marketplace:mark_order_received' cart_id=item.cart_id %}" class="btn-primary"
+                       onclick="return confirm('Mark this order as received?');">
+                      Order Received
+                    </a>
+                    {% endif %}
+                  </td>
+                </tr>
+                {% empty %}
+                <tr>
+                  <td colspan="6">Your cart is empty.</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <p class="claim-message">Claim your orders at ICpEP Office</p>
+            <div class="total">
+              <strong>Total:</strong> ₱{{ total_cost }}
+            </div>
+          </div>
+
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+        <script>
+            AOS.init();
+
+            const navbar = document.querySelector(".menu-bar");
+
+            window.addEventListener("scroll", () => {
+              if (window.scrollY > 100) {
+                navbar.classList.add("scrolled");
+              } else {
+                navbar.classList.remove("scrolled");
+              }
+            });
+        </script>
+    </body>
+</html>

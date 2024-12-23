@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'ManropeR';
+  }
+  
+  @font-face {
+    font-family: 'ManropeR';
+    src: url('../Fonts/Manrope-Regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'ManropeSB';
+    src: url('../Fonts/Manrope-SemiBold.ttf') format('truetype');
+  }
+  
+  body {
+    height: 100vh;
+  }
+  
+  .container-events {
+    display: flex;
+    flex-wrap: wrap; 
+    width: 100%;
+    height: auto;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .big-circle-events {
+    position: fixed;
+    width: 900px;
+    height: 1000px;
+    background-color: #cccccc;
+    border-radius: 50%;
+    top: 50%;
+    right: -450px;
+    transform: translateY(-50%);
+    z-index: -1;
+  }
+  
+  .events-image-container-events {
+    flex-direction: column;
+  }
+  
+  .events-image-container-events img {
+    width: 50vw;
+    height: 50vh;
+    max-width: 321px;
+    margin-bottom: 10px;
+    border-radius: 25px;
+    margin-left: 1vw;
+    margin-top: 15vh;
+  }
+  
+  .right-section-events {
+    align-items: center;
+    text-align: center;
+    margin-top: 15vh;
+  }
+  
+  .title-box-events {
+    border-radius: 20px; 
+    width: 70vw; 
+    height: 20vh; 
+    background-color: #609bf3;
+    margin: 2vh auto; 
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .title-box-events h1 {
+    margin: 0;
+    padding-bottom: 10px;
+    font-weight: bold;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-family: 'ManropeSB';
+    color: white;
+  }
+  
+  .title-box-events span {
+    margin-left: 10px;
+    padding-bottom: 20px;
+    color: white;
+  }
+  
+  .events-details-events {
+    margin-left: 100px;
+  }
+  
+  .header-row-events {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 1rempx;
+    margin-right: 100px;
+    margin-top: 50px;
+    color: #609bf3;
+    flex-wrap: wrap;
+  }
+  
+  .content-row-events {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  #location-events, #date-events {
+    display: flex;
+    margin-left: 100px;
+    justify-content: space-between;
+    font-size: 1rem;
+    margin-right: 100px;
+    flex-wrap: wrap;
+    margin-top: 1vh;
+  }
+  
+  .about-section-events {
+    margin-left: 100px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 1rem;
+  }
+  
+  #about-header-events {
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  
+  @media (max-width: 768px) {
+    .container-events { 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+    }
+  
+    .left-section-events,
+    .right-section-events {
+        width: 100%; 
+        text-align: center; 
+    }
+  
+    .events-image-container-events img { 
+        width: 80%; 
+        height: auto; 
+        margin: 20px 0; 
+    }
+  
+    .title-box-events {
+        width: 90%; 
+        margin: 20px auto; 
+    }
+  
+    .events-details-events {
+        margin-left: 5vw;
+    }
+  
+    #location-events, #date-events {
+        margin-left: 5vw;
+    }
+  
+    .about-section-events {
+        margin-left: 5vw;
+    }
+  }

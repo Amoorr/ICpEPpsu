@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar of Events</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles_CalendarOE.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <nav class="menu-bar">
+        <!-- Checkbox for toggling menu -->
+        <input type="checkbox" id="check">
+        <!-- Hamburger-Style Menu icon -->
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <!-- Site logo -->
+        <label class="logo">ICpEP.SE - PSU.UC</label>
+        <!-- Navigation links -->
+        <ul>
+            <li><a id="menunav" href="{% url 'accounts:student_dashboard' %}">Home</a></li>
+            <li><a id="menunav" href="{% url 'accounts:about_us' %}">About Us</a></li>
+            <li><a id="menunav" href="{% url 'marketplace:student_marketplace' %}">Store</a></li>
+            <li><a id="menunav" href="{% url 'accounts:gallery' %}">Gallery</a></li>
+            <li><a id="menunav" href="{% url 'news:student_news_list' %}">News</a></li>
+            <li><a id="menunav" class="active" href="#">Calendar</a></li>
+            <li><a id="menunav" href="{% url 'accounts:change_password' %}">Account</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <p id="gradientTitle">CALENDAR OF EVENTS</p>
+        <h1 id="desc">Don't miss out on what's next!</h1>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <form method="get" action="{% url 'event_calendar:student_calendar' %}">
+            <input 
+                type="text" 
+                name="q" 
+                placeholder="Search events..." 
+                id="searchInput" 
+                value="{{ query|default:'' }}" 
+            >
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Event List -->
+    <div class="right-section">
+        {% if events %}
+            {% for event in events %}
+                <div class="card">
+                    <a href="{% url 'event_calendar:event_details' event.event_id %}">
+                        <h3>{{ event.event_name }}</h3>
+                        <p>{{ event.event_subhead }}</p>
+                        <div class="date">
+                            <span id="number">{{ event.event_date|date:"d" }}</span><br>
+                            {{ event.event_date|date:"M Y" }}
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No events are currently available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

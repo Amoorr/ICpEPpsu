@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICpEP.SE Admin Login</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles_login.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        <div id="left-section">
+            <div class="text-image-container">  
+                <p>ICpEP.SE - PSU.UC</p>
+                <h1>Empowering Future<br><span>Innovators in Computing<br>and Technology</span></h1>
+                <img src="{% static 'images/WAWIE2.jpg' %}" alt="ICpEP logo1">
+            </div>
+        </div>
+        <div class="right-section">
+            <div class="login-box">
+                <h2>Admin Login</h2>
+                <p>Welcome to ICpEP Website</p>
+                
+                <!-- Display non-field errors (e.g., invalid credentials) -->
+                {% if form.non_field_errors %}
+                    <div style="color: red; margin-bottom: 20px;">
+                        <strong>{{ form.non_field_errors }}</strong>
+                    </div>
+                {% endif %}
+
+                <!-- Display field-specific errors -->
+                {% if form.errors %}
+                    <div style="color: red; margin-bottom: 20px;">
+                        <strong>Invalid credentials, please try again.</strong>
+                    </div>
+                {% endif %}
+
+                <!-- Login Form -->
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Membership ID Field -->
+                    <label for="id_username">Membership ID Number</label>
+                    {{ form.username }}
+                    
+                    <!-- Password Field -->
+                    <label for="id_password">Password</label>
+                    {{ form.password }}
+                
+                    
+                    <!-- Submit Button -->
+                    <button type="submit">Login</button>
+                    
+                    <!-- Student Login Link -->
+                    <a href="{% url 'student_login' %}" class="forgot-password">Are you a Student?</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

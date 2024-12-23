@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Participants for {{ event.event_name }}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'admin_style.css' %}">
+</head>
+<body>
+    <h1>Participants for {{ event.event_name }}</h1>
+    <ul>
+        {% for participant in participants %}
+            <li>{{ participant.user_id.given_name }} {{ participant.user_id.last_name }} - {{ participant.event_state }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
